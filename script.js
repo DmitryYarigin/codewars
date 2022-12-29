@@ -18,3 +18,32 @@ function capitalizeWord(word) {
 // console.log(capitalizeWord("maria"));
 
 // 2) Century From Year
+
+function century(year) {
+  // return Math.ceil(year/ 100);
+  // еще вариант
+  return year % 100 === 0 ? parseInt(year / 100) : parseInt(year / 100) +1;
+}
+
+// console.log(century(2134));
+
+// 3) Convert a Number to a String!
+
+function numberToString(num) {
+  return num.toString();
+  // можно еще `${num}` и ''+num и String(num)
+}
+
+// console.log(numberToString(21));
+
+// 4) Convert a String to a Number!
+
+const stringToNumber = function(str){
+  // return +str;
+  // или
+  return Number(str);//  или parseInt(str);
+}
+
+// console.log(stringToNumber("123"));
+
+// 5) Convert to Binary

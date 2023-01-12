@@ -1,4 +1,9 @@
-h1 {
+.titlle {
+    display: none;
     font-size: 50px;
     color: blueviolet;
+}
+
+.active {
+    display: block;
 }

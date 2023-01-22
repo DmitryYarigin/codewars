@@ -47,3 +47,22 @@ const stringToNumber = function(str){
 // console.log(stringToNumber("123"));
 
 // 5) Convert to Binary
+
+function toBinary(n){
+  return Number(n.toString(2)); // можно вместо Number добавить parseInt или +
+}
+
+// console.log(toBinary(23));
+
+// console.log(typeof toBinary(23));
+
+// 6)  Fake binary
+function fakeBin(x){
+  return x.replace(/\d/g, d => d < 5 ? 0 : 1);
+  // return x.split('').map(element => element < 5 ? 0 : 1).join('');
+  
+}
+
+console.log(fakeBin('473'));
+
+// 6) Largest Square Inside A Circle

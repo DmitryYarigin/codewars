@@ -63,8 +63,77 @@ function fakeBin(x){
   
 }
 
-console.log(fakeBin('473'));
+// console.log(fakeBin('473'));
 
 // 6) Largest Square Inside A Circle
 
-// test
+// 7) Take an Arrow to the knee, Functionally
+var ArrowFunc = function(arr) {
+  return arr.map(el => String.fromCharCode(el)).join(''); //Complete this function
+}
+
+// 8) Merge two sorted arrays into one
+
+function mergeArrays(arr1, arr2) {
+  let arr3 = [];
+  arr3 = arr1.concat(arr2).sort((a, b) => a - b);
+  arr3 = arr3.filter((item, index) => {
+    return arr3.indexOf(item) === index;
+  });
+  return arr3;
+}
+
+// console.log(mergeArrays([4, 5, 6, 11], [1, 2, 3, 6]));
+
+// 9) 16+18=214
+// пробывал ничего не получилось, посмотрел в ютубе как делают 
+function add(num1, num2) {
+  num1 = num1.toString().split('').reverse();
+  num2 = num2.toString().split('').reverse();
+  let max = Math.max(num1.length, num2.length);
+  let arr = []
+
+  for (let i = max - 1; i >= 0; i--) {
+      arr.push((Number(num1[i]) || 0) + (Number(num2[i]) || 0)); 
+  }
+    return Number(arr.join(''));
+  };
+
+// console.log(add(1222, 30277));
+
+// 10) Add property to every object in array
+
+var questions = [{
+  question: "What's the currency of the USA?",
+  choices: ["US dollar", "Ruble", "Horses", "Gold"],
+  corAnswer: 0
+}, {
+  question: "Where was the American Declaration of Independence signed?",
+  choices: ["Philadelphia", "At the bottom", "Frankie's Pub", "China"],
+  corAnswer: 0
+}];
+
+questions.forEach((el) => {
+  el["usersAnswer"] = null;
+});
+
+
+// console.log(questions);
+
+// 11) Colour Association
+
+function colourAssociation(array){
+  newArr = [];
+  return array.map(el => ({[el[0]] : el[1]}));
+  // надо повторить
+  let newArr = [];
+  for(let i = 0; i < array.length; i++) {
+    let newObj = {};
+    let key = array[i][0];
+    let value = array[i][1];
+    newObj[key] = value;
+    newArr.push(newObj);
+  }
+}
+
+console.log(colourAssociation([["white", "goodness"],["green", "great"]]));

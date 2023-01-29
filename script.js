@@ -123,17 +123,87 @@ questions.forEach((el) => {
 // 11) Colour Association
 
 function colourAssociation(array){
-  newArr = [];
-  return array.map(el => ({[el[0]] : el[1]}));
-  // надо повторить
   let newArr = [];
-  for(let i = 0; i < array.length; i++) {
-    let newObj = {};
+  for (let i = 0; i < array.length; i++) {
+    let newObject = {};
     let key = array[i][0];
     let value = array[i][1];
-    newObj[key] = value;
-    newArr.push(newObj);
+    newObject[key] = value;
+    newArr.push(newObject);
   }
+  return newArr
+}
+// можно еще решить с помощью map
+// array.map(([colour, association]) => ({[colour]:association}));
+
+
+// console.log(colourAssociation([["white", "goodness"],["green", "great"]]));
+
+// 12) Combine objects
+
+const objA = {a: 10, b: 15};
+const objB = {a: 5,  b: 20};
+const objC = {d: 5,  f: 20};
+
+
+function combine(...obj) {
+  let comboObj = {};
+  for(let i = 0; i < obj.length; i++) {
+    for(let key in obj[i]){
+      if(comboObj[key]) {
+        console.log(comboObj[key]);
+        comboObj[key] += obj[i][key];
+      }
+      else {
+        comboObj[key] = obj[i][key];
+      }
+
+    }
+  }
+  return comboObj;
 }
 
-console.log(colourAssociation([["white", "goodness"],["green", "great"]]));
+// console.log(combine(objA, objB, objC));
+
+// 13) Count the Digit
+
+function nbDig(n, d) {
+  // let numToString = n.toString();
+  // let arr = [];
+  // let result = 0;
+  // for (let i = 0; i <= numToString; i++) {
+  //   arr.push(i**2);
+  // };
+
+  // let joinArr = arr.join('');
+  // for (let i = 0; i < joinArr.length; i++) {
+  //   if(joinArr[i] == d) result++;
+  // }
+  // return result;
+// }
+// можно было так
+  let o = '';
+    for(let i = 0; i <= n; i++) {
+      o += Math.pow(i, 2);
+    }
+    // console.log(o.split(d));
+    return o.split(d).length -1;
+}
+// console.log(nbDig(10, 1));
+
+// 14) Find the missing element between two arrays
+
+// function findMissing(arr1, arr2) {
+//   let arr1Sort = arr1.sort();
+//   let arr2Sort = arr2.sort();
+//   for (let i = 0; i < arr1Sort.length; i++) {
+//      if(arr1Sort[i] != arr2Sort[i]) return arr1Sort[i];
+//     }
+// }
+// можно было так
+
+const sum = arr => arr.reduce((a, b) => a + b, 0);
+const findMissing = (arr1, arr2) => sum(arr1) - sum(arr2)
+
+console.log(findMissing([4, 3, 3, 61, 8, 8], [8, 61, 8, 3, 4]));
+

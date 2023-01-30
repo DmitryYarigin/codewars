@@ -193,17 +193,80 @@ function nbDig(n, d) {
 
 // 14) Find the missing element between two arrays
 
-// function findMissing(arr1, arr2) {
-//   let arr1Sort = arr1.sort();
-//   let arr2Sort = arr2.sort();
-//   for (let i = 0; i < arr1Sort.length; i++) {
-//      if(arr1Sort[i] != arr2Sort[i]) return arr1Sort[i];
-//     }
-// }
+function findMissing(arr1, arr2) {
+  let arr1Sort = arr1.sort();
+  let arr2Sort = arr2.sort();
+  for (let i = 0; i < arr1Sort.length; i++) {
+     if(arr1Sort[i] != arr2Sort[i]) return arr1Sort[i];
+    }
+}
 // можно было так
 
-const sum = arr => arr.reduce((a, b) => a + b, 0);
-const findMissing = (arr1, arr2) => sum(arr1) - sum(arr2)
+// const sum = arr => arr.reduce((a, b) => a + b, 0);
+// const findMissing = (arr1, arr2) => sum(arr1) - sum(arr2)
 
-console.log(findMissing([4, 3, 3, 61, 8, 8], [8, 61, 8, 3, 4]));
+// console.log(findMissing([4, 3, 3, 61, 8, 8], [8, 61, 8, 3, 4]));
 
+// 15) Get decimal part of the given number
+
+function getDecimal(n){
+  if(n < 0) n = n * -1;
+  let newNum = n * 10;
+  let parseNum = parseInt(n) * 10;
+  n = (newNum - parseNum) / 10;
+  return n;
+}
+// короткий вариант
+// return Math.abs(n%1);
+// console.log(getDecimal(-1.2));
+
+// 16) Maximum Triplet Sum
+function maxTriSum(numbers){
+  //вместо filter можно использовать [...new Set(numbers)] тоже уберет дубликаты
+  return numbers.filter((el, index, self) => {
+    return index === self.indexOf(el);
+  })
+  .sort((a, b) => a - b).splice(-3).reduce((sum, a) => sum + a, 0);
+}
+
+// console.log(maxTriSum([2,9,13,10,5,2,9,5]));
+
+// 17) Whose bicycle?
+
+function whoseBicycle(diary1, diary2, diary3) {
+  diary1 = Object.values(diary1).reduce((a, b) => a + b, 0);
+  diary2 = Object.values(diary2).reduce((a, b) => a + b, 0);
+  diary3 = Object.values(diary3).reduce((a, b) => a + b, 0);
+
+  let message;
+
+  if((diary1 > diary2) && (diary1 > diary3)) message = 'first';
+  else if((diary2 >= diary1) && (diary2 > diary3)) message = 'second';
+  else if((diary3 >= diary1) && (diary3 >= diary2)) message = 'third';
+
+  return `I need to buy a bicycle for my ${message} son.`
+}
+
+console.log(whoseBicycle(
+{
+  'algebra': 6,
+  'history': 7,
+  'physics': 8,
+  'geography': 9,
+  'chemistry': 10
+},
+{
+  'algebra': 8,
+  'history': 7,
+  'physics': 8,
+  'geography': 9,
+  'chemistry': 10
+},
+{
+  'algebra': 6,
+  'history': 5,
+  'physics': 5,
+  'geography': 9,
+  'chemistry': 10
+}
+));

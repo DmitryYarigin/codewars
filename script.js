@@ -247,26 +247,36 @@ function whoseBicycle(diary1, diary2, diary3) {
   return `I need to buy a bicycle for my ${message} son.`
 }
 
-console.log(whoseBicycle(
-{
-  'algebra': 6,
-  'history': 7,
-  'physics': 8,
-  'geography': 9,
-  'chemistry': 10
-},
-{
-  'algebra': 8,
-  'history': 7,
-  'physics': 8,
-  'geography': 9,
-  'chemistry': 10
-},
-{
-  'algebra': 6,
-  'history': 5,
-  'physics': 5,
-  'geography': 9,
-  'chemistry': 10
+//  ========== 3 part ===========
+
+// count strings in objects (задача на рекурсию)
+
+function strCount(obj){
+  let count = 0; 
+  for (const key in obj) { 
+    if (typeof obj[key] === 'string') {
+      count++;
+      console.log(`obj[key] ${obj[key]}`, count);
+      console.log(`count ${count}`);
+    }
+    if(typeof obj[key] === 'object') {
+      count += strCount(obj[key]);
+    }   
+  }
+  return count;
 }
-));
+
+
+// console.log(strCount({
+//   first: "1",
+//   second: "2",
+//   third: false,
+//   fourth: ["anytime",2,3,["manytime"],4],
+//   fifth:  null
+// }));
+
+// Base Conversion
+
+function convert(input, source, target) {
+  // TODO
+}
